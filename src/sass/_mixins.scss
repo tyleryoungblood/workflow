@@ -1,3 +1,6 @@
+// NOTE: MIXINS DON'T GET COMPILED INTO CSS UNLESS THEY ARE USED using 
+// @include mixinName
+
 // CLEARFIX
 // ========
 // to use apply directly to the element within the css with "@include clearfix;"
