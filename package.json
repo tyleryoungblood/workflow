@@ -7,4 +7,7 @@
     "url": "?.git"
   },
   "author": "Tyler Youngblood",
+  "devDependencies": {
+    "gulp-util": "^3.0.2"
+  }
 }
