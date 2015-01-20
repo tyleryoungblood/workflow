@@ -1,0 +1,10 @@
+{
+  "name": "workflow",
+  "version": "0.0.1",
+  "description": "My default web project workflow with Gulp, Sass, and BrowserSync",
+  "repository": {
+    "type": "git",
+    "url": "?.git"
+  },
+  "author": "Tyler Youngblood",
+}

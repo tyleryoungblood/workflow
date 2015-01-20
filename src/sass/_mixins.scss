@@ -1,0 +1,11 @@
+// CLEARFIX
+// ========
+// to use apply directly to the element within the css with "@include clearfix;"
+// rather than adding a class="clearfix" to a tag in the html.
+@mixin clearfix { 
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
