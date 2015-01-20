@@ -21,6 +21,13 @@ gulp.task('js', function() {
 gulp.task('sass', function() {
   gulp.src('src/sass/*.scss')
     .pipe(sass())
-    //.on('error', gutil.log)
+    //.on('error', gutil.log) // enable for more verbose terminal error messages
     .pipe(gulp.dest('src/css'));
 });
+
+gulp.task('watch', function() {
+  gulp.watch('src/js/*.js', ['js']);
+  gulp.watch('src/sass/*.scss', ['sass']);
+});
+
+gulp.task('default', ['js', 'sass', 'watch']); // default task to run when typing "gulp" in terminal window
