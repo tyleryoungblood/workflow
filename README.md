@@ -1,10 +1,9 @@
 # Web Development Workflow
 
-Using Gulp, Sass, and BrowserSync
+A simple starter workflow for basic web development projects that uses Gulp, Sass, and BrowserSync
 
 ## Required Software
 - Node.js (allows you to install npm packages)
-- 
 
 ## Getting Started
 - Clone the repo to your local development environment
