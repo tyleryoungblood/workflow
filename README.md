@@ -6,7 +6,8 @@ A simple starter workflow for basic web development projects that uses Gulp, Sas
 - Node.js (allows you to install npm packages)
 
 ## Getting Started
-- Clone the repo to your local development environment
-- Navigate to the root directory in a command prompt
-- type <code>npm install</code>
+- Clone this repo to your local development environment
+-- If you're using Sublime Text, consider using "Fetch" explained below
+- Navigate to the root directory in a command prompt or terminal window
+- type <code>npm install</code> to install required node modules
 
