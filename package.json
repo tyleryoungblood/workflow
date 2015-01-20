@@ -8,6 +8,7 @@
   },
   "author": "Tyler Youngblood",
   "devDependencies": {
+    "gulp-concat": "^2.4.3",
     "gulp-util": "^3.0.2"
   }
 }
