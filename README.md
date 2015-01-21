@@ -24,6 +24,21 @@ Make sure the following software is installed on your computer. An easy way to c
     - this will also create a node_modules folder in your root directory. Make sure your .gitignore file is ignoring your modules!
 
 ## Using Fetch with Sublime Text 3 (Should also work with ST 2)
+Fetch is an awesome Sublime Text plugin that is best explained via this [NetTuts article](http://code.tutsplus.com/articles/introducing-nettuts-fetch--net-23490).
+
+Once you've installed the Fetch plugin via package manager (<code>ctrl + shift + p</code> on win or <code>ctrl + shift + p</code> on mac) you need to edit the "Fetch: Manage" file.
+- Open up package manager, type "Fetch", select "Fetch:Manage"
+- This will open up the "Fetch.sublime-settings" file for editing
+- add the following to the "packages" section
+   - "workflow": "https://github.com/tyleryoungblood/workflow/zipball/master"
+
+**Note:** Remember to comma separate multiple packages, but don't put a comma after the last package. Otherwise your file won't parse and you'll get an error. 
+
+Once you've added the package to your Fetch.sublime-settings file you can access it by:
+1. opening package manager (<code>ctrl + shift + p</code> on win or <code>ctrl + shift + p</code> on mac)
+2. typing "fetch"
+3. chosing "packages"
+4. selecting "workflow"
 
 ## Gulp Tasks
 
