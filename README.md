@@ -35,7 +35,7 @@ Typing <code>gulp</code> in your terminal will run the default gulp task from yo
     - editing the comment surrounding script tags will change the name and location of the optimized.js file   
 
 ### "gulp build-root"
-Typing <code>gulp build-root</code> in your terminal window will run a build task identical to <code>gulp buil</code> above, but instead of saving the build files to builds/dist is saves them to the root directory. Useful if you want to deploy the entire project to a server and have your index.html file exist in root.
+Typing <code>gulp build-root</code> in your terminal window will run a build task identical to <code>gulp build</code> above, but instead of saving the build files to builds/dist is saves them to the root directory. Useful if you want to deploy the entire project to a server and have your index.html file exist in root.
 
 **Warning** There may be security issues with deploying your entire root directory to the server. It's a better idea to deploy a "dist" (distribution version of your code that will exist in builds/dist after running "gulp build") version of your code only.
 
