@@ -5,10 +5,10 @@ A simple starter workflow for basic web development projects that uses Gulp, Sas
 ## Features
 - Live Reloading (via BrowserSync) of you web page whenever you save a change to an html, sass (css), or js file
 - Sass preprocessing (turns sass into css via gulp-sass)
-- Organized workflow with the following structure
-    - src directory (for source code - the only stuff you should be editing)
-    - builds/dev (for development code - the stuff you'll veiw in the browser for testing)
-    - builds/dist (for code ready for distribution - the stuff you'll upload to your own server)
+- Organized workflow with the following structure:
+    - **src** directory (for source code - the only stuff you should be editing)
+    - **builds/dev** (for development code - the stuff you'll veiw in the browser for testing)
+    - **builds/dist** (for code ready for distribution - the stuff you'll upload to your own server)
 
 ## Required Software
 Make sure the following software is installed on your computer. An easy way to check to see if something is installed is to type the name of the software followed by --version in a command prompt or terminal window. For example, type <code>node --version</code> to check to see if node.js has been installed. If you see *'node' is not recognized as an internal or external command ...* it means that node isn't installed on your system.
