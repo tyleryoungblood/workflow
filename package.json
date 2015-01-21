@@ -4,7 +4,7 @@
   "description": "My default web project workflow with Gulp, Sass, and BrowserSync",
   "repository": {
     "type": "git",
-    "url": "?.git"
+    "url": "https://github.com/tyleryoungblood/workflow.git"
   },
   "author": "Tyler Youngblood",
   "devDependencies": {

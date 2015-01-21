@@ -82,7 +82,7 @@ gulp.task('usemin-root', function() {
     .pipe(gulp.dest('./'));
 });
 
-
+ 
 gulp.task('build', ['usemin']); // minify css & html, uglify js, and pipe to dist directory
 gulp.task('build-root', ['usemin-root']); //same as build, but to root instead of builds/dist
 
