@@ -13,3 +13,31 @@ Make sure the following software is installed on your computer. An easy way to c
 - Navigate to the root directory in a command prompt or terminal window
 - type <code>npm install</code> to install required node modules
 
+## Using Fetch with Sublime Text 3 (Should also work with ST 2)
+
+## Gulp Tasks
+
+### "gulp"
+Typing <code>gulp</code> in your terminal will run the default gulp task from your gulpfile.js file. This will do the following:
+- Concatenates all sass files (including partials) into a single css file and saves it to builds/dev/css/styles.css
+- Concatenates all js files into a single js file and saves it to builds/dev/js/scripts.js
+- Pipes (moves) any html files from src to builds/dev
+- Loads BrowserSync to sync page across multiple devices
+- Watches for changes to html, js, and sass files and reloads the page whenever any changes are made
+
+### "gulp build"
+- Minifies html file(s) and saves them to builds/dist
+- Automagically (using gulp-usemin) replaces old links to css and js files so that they point to the minified/uglified versions.
+- Minifies and concatenates css and saves to builds/dist/css/styles.min.css
+    - Note: you change the name and save location of the minified file by editing the comment surrounding the link to the stylesheet in the index file located in src/index.html
+    - a comment of <!-- build:css css/styles.min.css --> will result in a css file saved to css/styles.min.css
+- Uglifies (minifies) and concatenates js files and saves to builds/dist/js/optimized.js
+    - editing the comment surrounding script tags will change the name and location of the optimized.js file   
+
+### "gulp build-root"
+Typing <code>gulp build-root</code> in your terminal window will run a build task identical to <code>gulp buil</code> above, but instead of saving the build files to builds/dist is saves them to the root directory. Useful if you want to deploy the entire project to a server and have your index.html file exist in root.
+
+**Warning** There may be security issues with deploying your entire root directory to the server. It's a better idea to deploy a "dist" (distribution version of your code that will exist in builds/dist after running "gulp build") version of your code only.
+
+### "gulp deploy"
+Eventually this task will handle deploying to a server via FTP
