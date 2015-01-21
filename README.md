@@ -26,12 +26,14 @@ Typing <code>gulp</code> in your terminal will run the default gulp task from yo
 - Watches for changes to html, js, and sass files and reloads the page whenever any changes are made
 
 ### "gulp build"
-- Minifies html file(s) and saves them to builds/dist
-- Automagically (using gulp-usemin) replaces old links to css and js files so that they point to the minified/uglified versions.
-- Minifies and concatenates css and saves to builds/dist/css/styles.min.css
+Typing <code>gulp build</code> in your terminal will run the build task from your gulpfile.js file. This will do the following:
+
+- Minifiy html file(s) and save them to builds/dist
+- Automagically (using gulp-usemin) replace old links to css and js files so that they point to the minified/uglified versions.
+- Minify and concatenate css files and save them to builds/dist/css/styles.min.css
     - Note: you change the name and save location of the minified file by editing the comment surrounding the link to the stylesheet in the index file located in src/index.html
     - a comment of <!-- build:css css/styles.min.css --> will result in a css file saved to css/styles.min.css
-- Uglifies (minifies) and concatenates js files and saves to builds/dist/js/optimized.js
+- Uglify (minify) and concatenate js files and save them to builds/dist/js/optimized.js
     - editing the comment surrounding script tags will change the name and location of the optimized.js file   
 
 ### "gulp build-root"
