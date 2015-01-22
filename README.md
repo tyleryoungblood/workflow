@@ -35,10 +35,10 @@ Once you've installed the Fetch plugin via package manager (<code>ctrl + shift +
 **Note:** Remember to comma separate multiple packages, but don't put a comma after the last package. Otherwise your file won't parse and you'll get an error. 
 
 Once you've added the package to your Fetch.sublime-settings file you can access it by:
-1. opening package manager (<code>ctrl + shift + p</code> on win or <code>ctrl + shift + p</code> on mac)
-2. typing "fetch"
-3. chosing "packages"
-4. selecting "workflow"
+1.  opening package manager (<code>ctrl + shift + p</code> on win or <code>ctrl + shift + p</code> on mac)
+1.  typing "fetch"
+1.  chosing "packages"
+1.  selecting "workflow"
 
 ## Gulp Tasks
 
