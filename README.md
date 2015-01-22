@@ -16,12 +16,17 @@ Make sure the following software is installed on your computer. An easy way to c
 - Gulp.js (type <code>npm install -g gulp</code> to install Gulp.js globally)
 
 ## Getting Started
-- Clone this repo to your local development environment
-    - If you're using Sublime Text, consider using "Fetch" explained below
+- Somehow you need to get the source code into your project directory. There are multiple ways to do this.
+    1. Simple Way: Download a zip of this repo and extract it to your project folder on your local development environment
+    2. Git Proficient Way: Clone this repo to your project folder on your local development environment
+    3. Super Awesome Way: If you're using Sublime Text, consider using "Fetch" (explained below)
 - Navigate to the root directory in a command prompt or terminal window
 - type <code>npm install</code> to install required node modules
     - this will install all of the development dependencies from the package.json file
     - this will also create a node_modules folder in your root directory. Make sure your .gitignore file is ignoring your modules!
+- Edit the files in the "src" directory ONLY
+- If you don't know sass, you can write vanilla css in your sass file(s). 
+- You can breakup your sass file into "partials" (the files that begin with an underscore, such as _variables.scss), just be sure to remember to import them into your styles.scss file by using <code>@import</code>
 
 ## Using Fetch with Sublime Text 3 (Should also work with ST 2)
 Fetch is an awesome Sublime Text plugin that is best explained via this [NetTuts article](http://code.tutsplus.com/articles/introducing-nettuts-fetch--net-23490).
