@@ -21,39 +21,54 @@ var jsSources   = [   'src/js/test.js',
 //   gutil.log('Yea!');
 // });
 
+var paths = {
+  src: {
+    base: 'src',
+    sass: 'src/sass/**/*.scss',
+    js: 'src/js/**/*.js',
+    html: 'src/**/*.html'
+  },
+  dev: {
+    base: 'builds/dev',
+    css: 'builds/dev/css',
+    js: 'builds/dev/js',
+    html: 'builds/dev'
+  }
+}
+
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
-      baseDir: "builds/dev" // "./" means root dir
+      baseDir: paths.dev.base // "./" means root dir
     }
   });
 });
 
 gulp.task('html', function() {
-  gulp.src('src/*.html') // get any html files from the src dir
-    .pipe(gulp.dest('builds/dev'))
+  gulp.src(paths.src.html) // get any html files from the src dir
+    .pipe(gulp.dest(paths.dev.html))
     .pipe(reload({stream:true})) // reload page via browserSync
 });
 
 gulp.task('js', function() {
   gulp.src(jsSources) //grab all the js files listed in the jsSources var
     .pipe(concat('scripts.js')) // pipe each file through the concat plugin and combine into a single "scripts.js" file
-    .pipe(gulp.dest('builds/dev/js/')) // copy the scripts.js file to the js folder in root
+    .pipe(gulp.dest(paths.dev.js)) // copy the scripts.js file to the js folder in root
     .pipe(reload({stream:true})) // reload page via browserSync
 });
 
 gulp.task('sass', function() {
-  gulp.src('src/sass/*.scss')
+  gulp.src(paths.src.sass)
     .pipe(sass())
     //.on('error', gutil.log) // enable for more verbose terminal error messages
-    .pipe(gulp.dest('builds/dev/css'))
+    .pipe(gulp.dest(paths.dev.css))
     .pipe(reload({stream:true})) // reload page via browserSync
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/js/*.js', ['js']);
-  gulp.watch('src/sass/*.scss', ['sass']);
-  gulp.watch('./**/*.html', ['html'], reload); // watch for any changes to .html files in root or subdirectories and call the reload task
+  gulp.watch(paths.src.js, ['js']);
+  gulp.watch(paths.src.sass, ['sass']);
+  gulp.watch(paths.src.html, ['html'], reload); // watch for any changes to .html files in root or subdirectories and call the reload task
 });
 
 gulp.task('default', ['browser-sync', 'html', 'js', 'sass', 'watch']); // default task to run when typing "gulp" in terminal window
@@ -61,18 +76,18 @@ gulp.task('default', ['browser-sync', 'html', 'js', 'sass', 'watch']); // defaul
 // BUILD TASK
 
 gulp.task('usemin', function() {
-  return gulp.src('builds/dev/*.html')
+  return gulp.src(paths.src.html)
     .pipe(usemin({
       css:  [minifyCss(), 'concat'],
       html: [minifyHtml({ empty: true,
                           conditionals: true })],
       js:   [uglify()]
     }))
-    .pipe(gulp.dest('builds/dist'));
+    .pipe(gulp.dest(paths.dev.html));
 });
 
 gulp.task('usemin-root', function() {
-  return gulp.src('builds/dev/*.html')
+  return gulp.src(paths.dev.html)
     .pipe(usemin({
       css:  [minifyCss(), 'concat'],
       html: [minifyHtml({ empty: true,
@@ -82,7 +97,7 @@ gulp.task('usemin-root', function() {
     .pipe(gulp.dest('./'));
 });
 
- 
+
 gulp.task('build', ['usemin']); // minify css & html, uglify js, and pipe to dist directory
 gulp.task('build-root', ['usemin-root']); //same as build, but to root instead of builds/dist
 
