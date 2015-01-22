@@ -17,21 +17,24 @@ var // VARS FOR DEFAULT TASK
 var jsSources   = [   'src/js/test.js',
                       'src/js/test2.js' ];
 
-var paths = {
+var paths = { // create a paths object so that you can use 'paths.src.html' rather than 'src/**/*.html'
   src: {
     base: 'src',
+    img:  'src/img',
     sass: 'src/sass/**/*.scss',
     js:   'src/js/**/*.js',
     html: 'src/**/*.html'
   },
   dev: {
     base: 'builds/dev',
+    img:  'builds/dev/img',
     css:  'builds/dev/css',
     js:   'builds/dev/js',
     html: 'builds/dev'
   },
   dist: {
     base: 'builds/dist',
+    img:  'builds/dist/img.',
     css:  'builds/dist/css',
     js:   'builds/dist/js',
     html: 'builds/dist/'
@@ -39,10 +42,25 @@ var paths = {
 
 }
 
+gulp.task('copy-dev', function() {
+  gulp.src(paths.src.img + '**/*.*') // grab everything in the img folder and pipe it to dev
+    .pipe(gulp.dest(paths.dev.base));
+});
+
+gulp.task('copy-dist', function() {
+  gulp.src(paths.dev.img + '**/*.*') // grab everything in the img folder and pipe it to dist
+    .pipe(gulp.dest(paths.dist.base));
+});
+
+gulp.task('copy-root', function() {
+  gulp.src(paths.dev.img + '**/*.*') // grab everything in the img folder and pipe it to dist
+    .pipe(gulp.dest('./'));
+});
+
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
-      baseDir: paths.dev.base // "./" means root dir
+      baseDir: [paths.dev.base, paths.src.base, "./"] // look in dev, then src, then root for things
     }
   });
 });
@@ -74,12 +92,12 @@ gulp.task('watch', function() {
   gulp.watch(paths.src.html, ['html'], reload); // watch for any changes to .html files in root or subdirectories and call the reload task
 });
 
-gulp.task('default', ['browser-sync', 'html', 'js', 'sass', 'watch']); // default task to run when typing "gulp" in terminal window
+gulp.task('default', ['copy-dev', 'browser-sync', 'html', 'js', 'sass', 'watch']); // default task to run when typing "gulp" in terminal window
 
 // BUILD TASK
 
-gulp.task('usemin', function() {
-  return gulp.src('builds/dev/*.html')
+gulp.task('usemin', ['copy-dist'], function() {
+  return gulp.src('builds/dev/*.html') // grab the html file(s) and read their css and js comments to find required cs and js files
     .pipe(usemin({
       css:  [minifyCss(), 'concat'],
       html: [minifyHtml({ empty: true,
@@ -87,9 +105,12 @@ gulp.task('usemin', function() {
       js:   [uglify()]
     }))
     .pipe(gulp.dest(paths.dist.html));
+
+  gulp.scr(paths.dev.img)
+    .pipe(gulp.dest(paths.dist.img));
 });
 
-gulp.task('usemin-root', function() {
+gulp.task('usemin-root', ['copy-root'], function() {
   return gulp.src('builds/dev/*.html')
     .pipe(usemin({
       css:  [minifyCss(), 'concat'],
