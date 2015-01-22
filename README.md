@@ -34,11 +34,14 @@ Once you've installed the Fetch plugin via package manager (<code>ctrl + shift +
 
 **Note:** Remember to comma separate multiple packages, but don't put a comma after the last package. Otherwise your file won't parse and you'll get an error. 
 
-Once you've added the package to your Fetch.sublime-settings file you can access it by:
-1.  opening package manager (<code>ctrl + shift + p</code> on win or <code>ctrl + shift + p</code> on mac)
-1.  typing "fetch"
-1.  chosing "packages"
-1.  selecting "workflow"
+Once you've added the package to your Fetch.sublime-settings file you can access it using the following steps:
+
+1.  open package manager (<code>ctrl + shift + p</code> on win or <code>ctrl + shift + p</code> on mac)
+2.  type "fetch"
+3.  choose "packages"
+4.  select "workflow"
+
+This will automatically pull/grab/fetch (ah ... that's why they called it that!) all the code from the github repo into your project. Which ... is just freaking awesome!
 
 ## Gulp Tasks
 
