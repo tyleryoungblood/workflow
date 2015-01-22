@@ -13,27 +13,30 @@ var // VARS FOR DEFAULT TASK
     minifyHtml  = require('gulp-minify-html'),
     minifyCss   = require('gulp-minify-css');
 
-// control the order that js files get concatenated in by the order in the array below.
+// control the order that js files get concatenated in by their order in the array below.
 var jsSources   = [   'src/js/test.js',
                       'src/js/test2.js' ];
-
-// gulp.task('log', function() {
-//   gutil.log('Yea!');
-// });
 
 var paths = {
   src: {
     base: 'src',
     sass: 'src/sass/**/*.scss',
-    js: 'src/js/**/*.js',
+    js:   'src/js/**/*.js',
     html: 'src/**/*.html'
   },
   dev: {
     base: 'builds/dev',
-    css: 'builds/dev/css',
-    js: 'builds/dev/js',
+    css:  'builds/dev/css',
+    js:   'builds/dev/js',
     html: 'builds/dev'
+  },
+  dist: {
+    base: 'builds/dist',
+    css:  'builds/dist/css',
+    js:   'builds/dist/js',
+    html: 'builds/dist/'
   }
+
 }
 
 gulp.task('browser-sync', function() {
@@ -46,14 +49,14 @@ gulp.task('browser-sync', function() {
 
 gulp.task('html', function() {
   gulp.src(paths.src.html) // get any html files from the src dir
-    .pipe(gulp.dest(paths.dev.html))
+    .pipe(gulp.dest(paths.dev.html)) // copy html files to dev folder
     .pipe(reload({stream:true})) // reload page via browserSync
 });
 
 gulp.task('js', function() {
   gulp.src(jsSources) //grab all the js files listed in the jsSources var
     .pipe(concat('scripts.js')) // pipe each file through the concat plugin and combine into a single "scripts.js" file
-    .pipe(gulp.dest(paths.dev.js)) // copy the scripts.js file to the js folder in root
+    .pipe(gulp.dest(paths.dev.js)) // copy the scripts.js file to the js folder in dev
     .pipe(reload({stream:true})) // reload page via browserSync
 });
 
@@ -76,18 +79,18 @@ gulp.task('default', ['browser-sync', 'html', 'js', 'sass', 'watch']); // defaul
 // BUILD TASK
 
 gulp.task('usemin', function() {
-  return gulp.src(paths.src.html)
+  return gulp.src('builds/dev/*.html')
     .pipe(usemin({
       css:  [minifyCss(), 'concat'],
       html: [minifyHtml({ empty: true,
                           conditionals: true })],
       js:   [uglify()]
     }))
-    .pipe(gulp.dest(paths.dev.html));
+    .pipe(gulp.dest(paths.dist.html));
 });
 
 gulp.task('usemin-root', function() {
-  return gulp.src(paths.dev.html)
+  return gulp.src('builds/dev/*.html')
     .pipe(usemin({
       css:  [minifyCss(), 'concat'],
       html: [minifyHtml({ empty: true,
