@@ -1,6 +1,8 @@
 # Web Development Workflow
 
-A simple starter workflow for basic web development projects that uses Gulp, Sass, and BrowserSync
+A simple starter workflow for basic web development projects that uses Gulp, Sass, and BrowserSync. 
+
+Feel free to fork and/or contribute via a pull request. However, I plan to keep this workflow fairly basic to prevent the gulpfile from getting out of control. 
 
 ## Features
 - **Live Reloading** (via BrowserSync) of you web page whenever you save a change to an html, sass (css), or js file
